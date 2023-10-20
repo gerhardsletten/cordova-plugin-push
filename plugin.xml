@@ -35,6 +35,7 @@
       <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
       <uses-permission android:name="${applicationId}.permission.PushHandlerActivity"/>
       <permission android:name="${applicationId}.permission.PushHandlerActivity" android:protectionLevel="signature"></permission>
+      <uses-permission android:name="com.google.android.gms.permission.AD_ID"/>
     </config-file>
 
     <config-file target="AndroidManifest.xml" parent="/manifest/application">
@@ -67,11 +68,12 @@
 
     <preference name="ANDROIDX_CORE_VERSION" default="1.6.+"/>
     <preference name="FCM_VERSION" default="23.+"/>
+    <preference name="FCM_ANALYTICS_VERSION" default="21.2.+"/>
 
     <framework src="androidx.core:core:$ANDROIDX_CORE_VERSION" />
     <framework src="me.leolin:ShortcutBadger:1.1.22@aar"/>
     <framework src="com.google.firebase:firebase-messaging:$FCM_VERSION"/>
-    <framework src="com.google.firebase:firebase-analytics" />
+    <framework src="com.google.firebase:firebase-analytics:$FCM_ANALYTICS_VERSION" />
 
     <source-file src="src/android/com/adobe/phonegap/push/FCMService.kt" target-dir="java/com/adobe/phonegap/push/"/>
     <source-file src="src/android/com/adobe/phonegap/push/PushConstants.kt" target-dir="java/com/adobe/phonegap/push/"/>
@@ -95,6 +97,7 @@
 
   <platform name="ios">
     <preference name="IOS_FIREBASE_MESSAGING_VERSION" default="~> 8.1.1"/>
+    <preference name="IOS_FIREBASE_ANALYTICS_VERSION" default="~> 9.0.0"/>
 
     <config-file target="config.xml" parent="/*">
       <feature name="PushNotification">
@@ -129,7 +132,7 @@
       </config>
       <pods use-frameworks="true">
         <pod name="Firebase/Messaging" spec="$IOS_FIREBASE_MESSAGING_VERSION" />
-        <pod name="Firebase/Analytics" spec="$IOS_FIREBASE_MESSAGING_VERSION" />
+        <pod name="Firebase/Analytics" spec="$IOS_FIREBASE_ANALYTICS_VERSION" />
       </pods>
     </podspec>
   </platform>
